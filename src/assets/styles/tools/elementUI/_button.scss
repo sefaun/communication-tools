@@ -1,0 +1,108 @@
+.el-button--special {
+  background-color: $primary !important;
+  border-color: $primary !important;
+  color: #FFF !important;
+}
+
+.el-button--special:disabled {
+  background-color: $primaryDisabled !important;
+  border-color: $primaryDisabled !important;
+  color: #FFF !important;
+}
+
+.el-button--special:hover {
+  background-color: $primaryShadow !important;
+}
+
+.el-button--special:focus {
+  background-color: $primaryShadow !important;
+  border-color: $primaryShadow !important;
+}
+
+//Primary
+.el-button--primary {
+  background-color: $buttonPrimary !important;
+  border-color: $buttonPrimary !important;
+  color: #FFF !important;
+}
+
+.el-button--primary:disabled {
+  background-color: $buttonPrimaryDisabled !important;
+  border-color: $buttonPrimaryDisabled !important;
+  color: #FFF !important;
+}
+
+.el-button--primary:hover {
+  background-color: $buttonPrimaryShadow !important;
+}
+
+.el-button--primary:focus {
+  background-color: $buttonPrimaryShadow !important;
+  border-color: $buttonPrimaryShadow !important;
+}
+
+//Success
+.el-button--success {
+  background-color: $success !important;
+  border-color: $success !important;
+  color: #FFF !important;
+}
+
+.el-button--success:disabled {
+  background-color: $successDisabled !important;
+  border-color: $successDisabled !important;
+  color: #FFF !important;
+}
+
+.el-button--success:hover {
+  background-color: $successShadow !important;
+}
+
+.el-button--success:focus {
+  background-color: $successShadow !important;
+  border-color: $successShadow !important;
+}
+
+//İnfo
+.el-button--info {
+  background-color: $info !important;
+  border-color: $info !important;
+  color: #FFF !important;
+}
+
+.el-button--info:disabled {
+  background-color: $infoDisabled !important;
+  border-color: $infoDisabled !important;
+  color: #FFF !important;
+}
+
+.el-button--info:hover {
+  background-color: $infoShadow !important;
+}
+
+.el-button--info:focus {
+  background-color: $infoShadow !important;
+  border-color: $infoShadow !important;
+}
+
+//Danger
+.el-button--danger {
+  background-color: $danger !important;
+  border-color: $danger !important;
+  color: #FFF !important;
+}
+
+.el-button--danger:disabled {
+  background-color: $dangerDisabled !important;
+  border-color: $dangerDisabled !important;
+  color: #FFF !important;
+}
+
+.el-button--danger:hover {
+  background-color: $dangerShadow !important;
+}
+
+.el-button--danger:focus {
+  background-color: $dangerShadow !important;
+  border-color: $dangerShadow !important;
+}

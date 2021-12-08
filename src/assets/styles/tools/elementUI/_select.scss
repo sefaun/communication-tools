@@ -1,0 +1,17 @@
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
+  color: $primary !important;
+}
+
+.el-tag.el-tag--info {
+  color: white !important;
+  background-color: $primaryShadow !important;
+  border-color: $primary !important;
+}
+
+.el-tag.el-tag--info .el-tag__close {
+  color: black !important;
+}
+
+.el-tag.el-tag--info .el-tag__close:hover {
+  background-color: $primaryShadow !important;
+}

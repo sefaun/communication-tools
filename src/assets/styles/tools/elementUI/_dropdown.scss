@@ -1,0 +1,4 @@
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: $primary !important;
+  color: white !important;
+}

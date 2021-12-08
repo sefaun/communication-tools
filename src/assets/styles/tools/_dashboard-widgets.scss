@@ -1,0 +1,42 @@
+.widget-background {
+  background-color: $widgetBackground !important;
+  & .gauge__cover {
+    background-color: $widgetBackground !important;
+  }
+  & .title {
+    color: black !important;
+  }
+  & .min {
+    color: black !important;
+  }
+  & .max {
+    color: black !important;
+  }
+  & .value {
+    color: black !important;
+  }
+  & .date {
+    color: black !important;
+  }
+  & .zero {
+    color: black !important;
+  }
+  & .one {
+    color: black !important;
+  }
+  & .two {
+    color: black !important;
+  }
+  & .three {
+    color: black !important;
+  }
+  & .four {
+    color: black !important;
+  }
+  & .five {
+    color: black !important;
+  }
+  & .six {
+    color: black !important;
+  }
+}

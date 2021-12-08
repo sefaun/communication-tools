@@ -1,0 +1,50 @@
+{
+  "general": {
+    "language": "Dil",
+    "tr": "Türkçe",
+    "en": "İngilizce"
+  },
+  "loading": {
+    "text": "İşlem Gerçekleştiriliyor..."
+  },
+  "notifications": {
+    "tcp_server": {
+      "type_a_port": "Port Yazınız",
+      "type_a_message": "Mesaj Yazınız",
+      "closed_tcp_server": "Server Kapandı",
+      "client_not_selected": "Kullanıcı Seçilmedi"
+    },
+    "tcp_client": {
+      "type_connection_info": "Bağlantı Bilgilerini Yazınız",
+      "closed_tcp_client_connection": "Kullanıcı Bağlantısı Sonlandırıldı",
+      "type_a_message": "Mesaj Yazınız"
+    }
+  },
+  "sidebar": {
+    "tcp": "TCP/IP",
+    "mqtt": "MQTT",
+    "serial": "Serial",
+    "socket_io": "Socket.io"
+  },
+  "tcp": {
+    "index": {
+      "server_logs": "Server Kayıtları",
+      "clear_logs": "Kayıtları Sil",
+      "client_logs": "Kullanıcı Kayıtları"
+    },
+    "server": {
+      "create_server": "Server Oluştur",
+      "close_server": "Server Kapat",
+      "clients": "Kullanıcılar",
+      "choose_client": "Kullanıcı Seç",
+      "close_clients": "Kullanıcıları Sonlandır",
+      "send_message": "Mesaj Gönder"
+    },
+    "client": {
+      "host": "Sunucu",
+      "connect_to_server": "Server'a Bağlan",
+      "close_connection": "Bağlantıyı Kapat",
+      "send_message": "Mesaj Gönder"
+    }
+  }
+}

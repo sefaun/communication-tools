@@ -1,0 +1,8 @@
+.el-dialog {
+  min-width: 300px !important;
+  margin-top: 30px !important;
+}
+
+.el-dialog__headerbtn:focus .el-dialog__close, .el-dialog__headerbtn:hover .el-dialog__close {
+  color: $primary !important;
+}

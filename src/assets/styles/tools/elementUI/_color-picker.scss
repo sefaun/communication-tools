@@ -1,0 +1,11 @@
+.el-button--text:focus, .el-button--text {
+  background-color: #FFF !important;
+  color: #606266 !important;
+  border-color: #DCDFE6 !important;
+  padding: 7px !important;
+}
+
+.el-button--text:focus, .el-button--text:hover {
+  color: $primary !important;
+  border-color: $primary !important;
+}

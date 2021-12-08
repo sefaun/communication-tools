@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import "./tools/variables";
+@import "./tools/global";
+@import "./tools/media-queries";
+@import "./tools/dark-theme";
+@import "./tools/helper";
+@import "./tools/general-layout";
+@import "./tools/sidebar";
+@import "./tools/navbar";
+
+//Element UI
+@import "./tools/elementUI/input";
+@import "./tools/elementUI/button";
+@import "./tools/elementUI/dialog";
+@import "./tools/elementUI/table";
+@import "./tools/elementUI/select";
+@import "./tools/elementUI/color-picker";
+@import "./tools/elementUI/dropdown";
+@import "./tools/elementUI/checkbox";
+@import "./tools/elementUI/form";

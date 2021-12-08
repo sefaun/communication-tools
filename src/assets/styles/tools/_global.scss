@@ -1,0 +1,114 @@
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $primary !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.delete-underline {
+  text-decoration: none;
+}
+
+.icon-color {
+  color: $primary !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.my-card {
+  background-color: white;
+  border-radius: 4px;
+  padding: 13px;
+}
+
+//Margin Right
+.mr-1 {
+  margin-right: 10px !important;
+}
+
+.mr-2 {
+  margin-right: 20px !important;
+}
+
+.mr-3 {
+  margin-right: 30px !important;
+}
+
+.mr-4 {
+  margin-right: 40px !important;
+}
+
+.mr-5 {
+  margin-right: 50px !important;
+}
+
+//Margin Left
+.ml-1 {
+  margin-left: 10px !important;
+}
+
+.ml-2 {
+  margin-left: 20px !important;
+}
+
+.ml-3 {
+  margin-left: 30px !important;
+}
+
+.ml-4 {
+  margin-left: 40px !important;
+}
+
+.ml-5 {
+  margin-left: 50px !important;
+}
+
+//Padding Right
+.pr-1 {
+  padding-right: 10px !important;
+}
+
+.pr-2 {
+  padding-right: 20px !important;
+}
+
+.pr-3 {
+  padding-right: 30px !important;
+}
+
+.pr-4 {
+  padding-right: 40px !important;
+}
+
+.pr-5 {
+  padding-right: 50px !important;
+}
+
+//Padding Left
+.pl-1 {
+  padding-left: 10px !important;
+}
+
+.pl-2 {
+  padding-left: 20px !important;
+}
+
+.pl-3 {
+  padding-left: 30px !important;
+}
+
+.pl-4 {
+  padding-left: 40px !important;
+}
+
+.pl-5 {
+  padding-left: 50px !important;
+}

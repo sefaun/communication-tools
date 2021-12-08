@@ -1,0 +1,50 @@
+{
+  "general": {
+    "language": "Lang",
+    "tr": "Turkish",
+    "en": "English"
+  },
+  "loading": {
+    "text": "Processing..."
+  },
+  "notifications": {
+    "tcp_server": {
+      "type_a_port": "Type a Port",
+      "type_a_message": "Type a Message",
+      "closed_tcp_server": "Server Shut Down",
+      "client_not_selected": "Client not selected"
+    },
+    "tcp_client": {
+      "type_connection_info": "Type Information Informations",
+      "closed_tcp_client_connection": "Client Connection Closed",
+      "type_a_message": "Type a Message"
+    }
+  },
+  "sidebar": {
+    "tcp": "TCP/IP",
+    "mqtt": "MQTT",
+    "serial": "Serial",
+    "socket_io": "Socket.io"
+  },
+  "tcp": {
+    "index": {
+      "server_logs": "Server Logs",
+      "clear_logs": "Clear Logs",
+      "client_logs": "Client Logs"
+    },
+    "server": {
+      "create_server": "Create Server",
+      "close_server": "Close Server",
+      "clients": "Clients",
+      "choose_client": "Choose Client",
+      "close_clients": "Close Clients",
+      "send_message": "Send Message"
+    },
+    "client": {
+      "host": "Host",
+      "connect_to_server": "Connect to Server",
+      "close_connection": "Close Connection",
+      "send_message": "Send Message"
+    }
+  }
+}

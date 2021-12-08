@@ -1,0 +1,26 @@
+.el-input__inner {
+  border: 1px solid $mainTextDark !important;
+}
+
+.el-input__inner::placeholder {
+  color: $mainText !important;
+  opacity: 0.9 !important;
+}
+
+.el-input__inner:focus {
+  border: 1px solid $primary !important;
+}
+
+.el-input__icon {
+  color: $primary !important;
+}
+
+//TextArea
+.el-textarea__inner {
+  border: 1px solid $mainTextDark !important;
+}
+
+.el-textarea__inner::placeholder {
+  color: $mainText !important;
+  opacity: 0.9 !important;
+}

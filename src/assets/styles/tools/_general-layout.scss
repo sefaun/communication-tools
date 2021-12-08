@@ -1,0 +1,14 @@
+.general-layout {
+  display: flex;
+  flex-direction: row;
+  & .content {
+    overflow-y: auto !important;
+    background-color: #f1f1f1;
+    width: calc(100% - 200px);
+    height: 100vh;
+    flex-direction: column;
+    @include responsive(tablet) {
+      width: 100vw !important;
+    }
+  }
+}

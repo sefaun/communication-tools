@@ -1,0 +1,106 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d9d9d9;
+  overflow-y: auto !important;
+  border-top: 2px solid $primary;
+  @include responsive(tablet) {
+    display: none;
+    &.open {
+      transition: 0.4s all linear;
+      display: flex !important;
+      left: 0px;
+      top: 0px;
+      position: fixed !important;
+      z-index: 200;
+      inset: 0;
+      // with animation fixed
+      position: fixed !important;
+      animation: animateleft 0.4s;
+
+      //left animation
+      @keyframes animateleft {
+        from {
+          left: -230px;
+          opacity: 0;
+        }
+        to {
+          left: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  & .sidebar-header {
+    height: 70px;
+    &.mobileSidebarHeader {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      & .closeBtn {
+        margin: 15px;
+        cursor: pointer;
+        & .closeBtnIcon {
+          font-size: 32px;
+        }
+      }
+      & .logo-container {
+        justify-content: center;
+      }
+    }
+    & .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      & .logo {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+      }
+    }
+  }
+  & .sidebar-body {
+    padding: 6px;
+    & .links {
+      display: flex;
+      flex-direction: column;
+      & .link {
+        padding: 8px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: 0.2s all linear;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        &.active {
+          background-color: $primary;
+          box-shadow: 0 0 10px 1px $primaryShadow;
+          & .link-icon {
+            color: #fff;
+          }
+          & .link-title {
+            color: #fff;
+          }
+        }
+        &:hover {
+          transition: 0.2s all linear;
+          padding-left: 17px;
+        }
+        & .link-icon {
+          margin-right: 7px;
+          color: $mainText;
+          font-size: 20px;
+        }
+        & .link-title {
+          font-size: 17px;
+          color: $mainText;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+body {
+  &.dark {
+    & .dark-text {
+      color: $mainTextDark !important;
+    }
+    & .general-layout {
+      color: $mainTextDark !important;
+      & .sidebar {
+        background-color: $darkBg;
+        border-right: 1px solid #222;
+        & .sidebar-body {
+          & .links {
+            & .link {
+              &.active {
+                & .link-icon {
+                  color: #fff;
+                }
+                & .link-title {
+                  color: #fff;
+                }
+              }
+              & .link-icon {
+                color: $mainTextDark;
+              }
+              & .link-title {
+                color: $mainTextDark;
+              }
+            }
+          }
+        }
+      }
+      & .myNavbar {
+        background-color: $darkBg;
+        & .myNavbar-content {
+          & .mobileButton {
+            & .mobileButtonIcon {
+              color: $mainTextDark;
+            }
+          }
+          & .myNavbar-links {
+            & .myNavbar-link {
+              & .myNavbar-link-icon {
+                color: #fff !important;
+              }
+              & .user-panel {
+                & .user-panel-info {
+                  & .user-display-name {
+                    color: #fff;
+                  }
+                  & .user-position {
+                    color: $mainTextDark;
+                  }
+                }
+              }
+            }
+          }
+        }
+        & .dropdown-menu {
+          background-color: $darkBg;
+          & .dropdown-item {
+            color: $mainTextDark;
+            &:hover {
+              background-color: $primary;
+              color: white;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      & .content {
+        background-color: $mainBgDark;
+      }
+    }
+    & .dark-mode {
+      color: #fff !important;
+    }
+    & .texts-dark {
+      color: $mainTextDark !important;
+    }
+    & .my-card {
+      background-color: $darkBg !important;
+      box-shadow: 0 0 2px grey !important;
+    }
+    //From Label
+    & .el-form-item__label {
+      color: $mainTextDark !important;
+    }
+    //Inputs
+    & .el-input__inner {
+      color: $mainTextDark !important;
+      background-color: $darkBg !important;
+    }
+    & .el-input__inner::placeholder {
+      color: $mainTextDark !important;
+    }
+    & .el-input .el-input__count .el-input__count-inner {
+      background-color: $darkBg !important;
+      color: $mainTextDark !important;
+    }
+    & .el-input.is-disabled .el-input__inner {
+      background-color: rgb(99, 99, 99) !important;
+    }
+    //TextArea
+    & .el-textarea__inner {
+      color: $mainTextDark !important;
+      background-color: $darkBg !important;
+    }
+    & .el-textarea__inner::placeholder {
+      color: $mainTextDark !important;
+    }
+    //Dialog
+    & .el-dialog {
+      background-color: $darkBg !important;
+      & .el-dialog__title {
+        color: $mainTextDark !important;
+      }
+    }
+    //Dropdown
+    & .el-dropdown-menu {
+      background-color: $darkBg !important;
+    }
+    & .el-dropdown-menu__item {
+      color: $mainTextDark !important;
+    }
+    & .el-dropdown-menu__item:hover {
+      color: white !important;
+    }
+    //Color Picker
+    & .el-color-picker__panel {
+      background-color: $darkBg !important;
+    }
+    & .el-button--text:focus, .el-button--text:hover {
+      color: $mainTextDark !important;
+    }
+    & .el-button.is-plain:focus, .el-button.is-plain:hover {
+      color: $primary !important;
+      border-color: $primary !important;
+    }
+    & .el-button--text:focus, .el-button--text:hover {
+      color: $primary !important;
+    }
+    //Select
+    & .el-select-dropdown__list {
+      background-color: $darkBg !important;
+    }
+    & .el-select-dropdown__item {
+      color: $mainTextDark !important;
+    }
+    & .el-select-dropdown__item:hover {
+      color: black !important;
+    }
+    & .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+      color: black !important;
+    }
+    & .el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
+      background-color: $darkBg !important;
+    }
+    & .el-select-dropdown.is-multiple .el-select-dropdown__item.selected:hover {
+      background-color: #F5F7FA !important;
+    }
+    & .el-select-dropdown__empty {
+      background-color: $darkBg !important;
+      color: $mainTextDark !important;
+    }
+  }
+}
