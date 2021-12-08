@@ -9,7 +9,12 @@
       <div class="col-md-6">
         <el-form label-position="top" :inline="true" class="demo-form-inline">
           <el-form-item :label="$t('tcp.client.host')">
-            <el-input class="mb-2" size="mini" v-model="host"></el-input>
+            <el-input
+              class="mb-2"
+              size="mini"
+              v-model="host"
+              :disabled="tcp_client_server_status"
+            ></el-input>
           </el-form-item>
         </el-form>
       </div>
@@ -22,6 +27,7 @@
               style="width: 100px"
               size="mini"
               v-model="port"
+              :disabled="tcp_client_server_status"
             ></el-input>
           </el-form-item>
         </el-form>
@@ -87,15 +93,14 @@ export default {
   },
   watch: {
     port: function (val) {
-      this.port = val.replace(this.portRegex, "");
-      if (Number(this.port) > 65535) {
+      if (Number(val) > 65535) {
         this.port = "65535";
       }
-      if (this.port[0] === "0") {
+      if (val[0] === "0") {
         this.port = "1";
       }
-      if (isNaN(this.port)) {
-        this.port = this.port.slice(0, this.port.length - 1);
+      if (isNaN(val)) {
+        this.port = val.slice(0, val.length - 1);
       }
       this.$store.commit("setTCPClientPort", this.port);
     },
@@ -111,7 +116,6 @@ export default {
       tcp_client_message: "getTCPClientMessage",
       tcp_client_server_status: "getTCPClientServerStatus",
       tcp_client_connection_status: "getTCPConnectionStatus",
-      portRegex: "getPortRegex",
     }),
   },
   created() {

@@ -35,15 +35,15 @@
           <div class="texts-dark font">TCP Client</div>
         </div>
         <!--MQTT Status-->
-        <!--<div class="d-grid justify-content-center mr-1">
+        <div class="d-grid justify-content-center mr-1">
           <div
             class="status-light"
             :style="{
-              backgroundColor: tcp_server_status
+              backgroundColor: mqtt_broker_status
                 ? 'rgb(0, 215, 0)'
                 : 'rgb(255, 0, 0)',
               boxShadow: `0 0 5px ${
-                tcp_server_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
+                mqtt_broker_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
               }`,
             }"
           ></div>
@@ -53,16 +53,16 @@
           <div
             class="status-light"
             :style="{
-              backgroundColor: tcp_client_server_status
+              backgroundColor: mqtt_client_status
                 ? 'rgb(0, 215, 0)'
                 : 'rgb(255, 0, 0)',
               boxShadow: `0 0 5px ${
-                tcp_client_server_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
+                mqtt_client_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
               }`,
             }"
           ></div>
           <div class="texts-dark font">MQTT Client</div>
-        </div>-->
+        </div>
       </div>
       <div class="myNavbar-links">
         <div style="margin-right: 15px">
@@ -131,6 +131,8 @@ export default {
       getTheme: "getTheme",
       tcp_server_status: "getTCPServerStatus",
       tcp_client_server_status: "getTCPClientServerStatus",
+      mqtt_broker_status: "getMQTTBrokerStatus",
+      mqtt_client_status: "getMQTTClientStatus",
     }),
   },
   created() {

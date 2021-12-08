@@ -5,12 +5,13 @@ import mainVue from "../main"
 
 import TCPServer from "./TCP/TCPServer"
 import TCPClient from "./TCP/TCPClient"
+import MQTTBroker from './MQTT/MQTTBroker'
+import MQTTClient from './MQTT/MQTTClient'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    portRegex: /^[a-zA-ZığüşöçİĞÜŞÖÇ\,\<\?\{\}\[\]\>\/\"\'\½\|\ \£\!\\\@\#\$\%\^\&\*\)\(+\=\._-]+$/g,
     loading: "none",
     theme: localStorage.getItem('theme') || 'light',
     isSidebarOpen: false,
@@ -76,7 +77,9 @@ const store = new Vuex.Store({
   },
   modules: {
     TCPServer: TCPServer,
-    TCPClient: TCPClient
+    TCPClient: TCPClient,
+    MQTTBroker: MQTTBroker,
+    MQTTClient: MQTTClient
   }
 })
 

@@ -15,6 +15,7 @@
               class="mb-2"
               size="mini"
               v-model="port"
+              :disabled="tcp_server_status"
             ></el-input>
           </el-form-item>
         </el-form>
@@ -122,17 +123,24 @@ export default {
       this.$store.commit("setSelectedTCPClients", val);
     },
     port: function (val) {
-      this.port = val.replace(this.portRegex, "");
-      if (Number(this.port) > 65535) {
+      if (Number(val) > 65535) {
         this.port = "65535";
       }
       if (this.port[0] === "0") {
         this.port = "1";
       }
-      if (isNaN(this.port)) {
-        this.port = this.port.slice(0, this.port.length - 1);
+      if (isNaN(val)) {
+        this.port = val.slice(0, val.length - 1);
       }
-      this.$store.commit("setTCPPort", this.port);
+      if (this.port !== this.mqtt_broker_port) {
+        this.$store.commit("setTCPPort", this.port);
+      } else {
+        this.port = Number(val) + 1;
+        this.$store.dispatch("pushNotification", {
+          message: "notifications.general.port_already_in_use",
+          type: "warning",
+        });
+      }
     },
     server_message: function (val) {
       this.$store.commit("setTCPServerMessage", val);
@@ -147,7 +155,7 @@ export default {
       tcp_server_status: "getTCPServerStatus",
       tcp_client_close_status: "getTCPClientCloseStatus",
       tcp_server_message: "getTCPServerMessage",
-      portRegex: "getPortRegex",
+      mqtt_broker_port: "getMQTTBrokerPort",
     }),
   },
   created() {
