@@ -23,7 +23,9 @@
       "type_a_message": "Mesaj Yazınız"
     },
     "mqtt_broker": {
-      "type_a_port": "Port Yazınız"
+      "type_a_port": "Port Yazınız",
+      "type_topic_and_message": "Topic ve Mesaj Yazınız",
+      "mqtt_broker_closed": "MQTT Broker Kapandı"
     }
   },
   "sidebar": {
@@ -61,7 +63,10 @@
     },
     "broker": {
       "create_broker": "Broker Oluştur",
-      "close_broker": "Broker Sonlandır"
+      "close_broker": "Broker Sonlandır",
+      "topic": "Topic",
+      "broker_message": "Broker Mesaj",
+      "send_message": "Mesaj Gönder"
     },
     "client": {}
   }

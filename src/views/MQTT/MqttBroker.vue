@@ -43,6 +43,52 @@
       </div>
     </div>
     <hr />
+    <div class="row justify-content-start align-items-center mt-1">
+      <div class="col-12 d-flex">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item :label="$t('mqtt.broker.topic')">
+            <el-input class="mb-2" size="mini" v-model="topic"></el-input>
+          </el-form-item>
+        </el-form>
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item label="Qos">
+            <el-select size="mini" v-model="qos" placeholder="Qos">
+              <el-option label="0" value="0"></el-option>
+              <el-option label="1" value="1"></el-option>
+              <el-option label="2" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+    <div class="row justify-content-start align-items-center mt-1">
+      <div class="col-md-6">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item :label="$t('mqtt.broker.broker_message')">
+            <el-input
+              class="mb-2"
+              size="mini"
+              v-model="broker_message"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="col-md-6">
+        <el-checkbox class="texts-dark" v-model="retain">Retain</el-checkbox>
+      </div>
+    </div>
+    <div class="row justify-content-start align-items-center mt-1">
+      <div class="col-12">
+        <el-button
+          class="m-0 mt-2"
+          size="mini"
+          type="special"
+          @click="sendMQTTBrokerMessageToClient()"
+          :disabled="!mqtt_broker_status"
+          >{{ $t("mqtt.broker.send_message") }}</el-button
+        >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,7 +99,10 @@ export default {
   data() {
     return {
       port: "",
+      topic: "",
       broker_message: "",
+      qos: "0",
+      retain: false,
     };
   },
   watch: {
@@ -69,6 +118,8 @@ export default {
       }
       if (this.port !== this.tcp_port) {
         this.$store.commit("setMQTTBrokerPort", this.port);
+      } else if (this.port === "") {
+        this.port = val;
       } else {
         this.port = Number(val) + 1;
         this.$store.dispatch("pushNotification", {
@@ -77,11 +128,27 @@ export default {
         });
       }
     },
+    topic: function (val) {
+      this.$store.commit("setMQTTBrokerMessageTopic", val);
+    },
+    broker_message: function (val) {
+      this.$store.commit("setMQTTBrokerMessage", val);
+    },
+    qos: function (val) {
+      this.$store.commit("setMQTTBrokerPublishMessageQOS", val);
+    },
+    retain: function (val) {
+      this.$store.commit("setMQTTBrokerPublishMessageRetain", val);
+    },
   },
   computed: {
     ...mapGetters({
       mqtt_broker_port: "getMQTTBrokerPort",
       mqtt_broker_status: "getMQTTBrokerStatus",
+      mqtt_broker_message_topic: "getMQTTBrokerMessageTopic",
+      mqtt_broker_message: "getMQTTBrokerMessage",
+      mqtt_broker_message_retain: "getMQTTBrokerRetain",
+      mqtt_broker_message_qos: "getMQTTBrokerQOS",
       tcp_port: "getTCPPort",
     }),
   },
@@ -101,9 +168,30 @@ export default {
     },
     closeMQTTBroker() {
       this.$store.dispatch("closeMQTTBroker");
+      this.$store.dispatch("pushNotification", {
+        message: "notifications.mqtt_broker.mqtt_broker_closed",
+        type: "warning",
+      });
+    },
+    sendMQTTBrokerMessageToClient() {
+      if (this.topic && this.broker_message) {
+        this.$store.dispatch("sendMQTTBrokerMessageToClient");
+      } else {
+        this.$store.dispatch("pushNotification", {
+          message: "notifications.mqtt_broker.type_topic_and_message",
+          type: "warning",
+        });
+      }
+    },
+    setQos(e) {
+      this.$store.commit("setMQTTBrokerPublishMessageRetain", e);
     },
     synchronizeLogsFromVuex() {
       this.port = this.mqtt_broker_port;
+      this.topic = this.mqtt_broker_message_topic;
+      this.broker_message = this.mqtt_broker_message;
+      this.qos = this.mqtt_broker_message_qos;
+      this.retain = this.mqtt_broker_message_retain;
     },
   },
 };

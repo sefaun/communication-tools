@@ -23,7 +23,9 @@
       "type_a_message": "Type a Message"
     },
     "mqtt_broker": {
-      "type_a_port": "Type a Port"
+      "type_a_port": "Type a Port",
+      "type_topic_and_message": "Type Topic and Message",
+      "mqtt_broker_closed": "MQTT Broker Closed"
     }
   },
   "sidebar": {
@@ -61,7 +63,10 @@
     },
     "broker": {
       "create_broker": "Create Broker",
-      "close_broker": "Close Broker"
+      "close_broker": "Close Broker",
+      "topic": "Topic",
+      "broker_message": "Broker Message",
+      "send_message": "Publish Message"
     },
     "client": {}
   }

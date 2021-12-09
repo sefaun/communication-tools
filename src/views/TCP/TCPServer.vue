@@ -134,6 +134,8 @@ export default {
       }
       if (this.port !== this.mqtt_broker_port) {
         this.$store.commit("setTCPPort", this.port);
+      } else if (this.port === "") {
+        this.port = val;
       } else {
         this.port = Number(val) + 1;
         this.$store.dispatch("pushNotification", {

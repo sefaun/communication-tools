@@ -9,6 +9,9 @@ export default {
     mqtt_broker_port: "",
     print_mqtt_broker_log: "",
     mqtt_broker_message: "",
+    mqtt_broker_message_topic: "",
+    mqtt_broker_message_qos: 0,
+    mqtt_broker_message_retain: false,
     mqtt_broker_status: false,
   },
   mutations: {
@@ -24,11 +27,29 @@ export default {
     setMQTTBrokerStatus(state, data) {
       state.mqtt_broker_status = data
     },
+    setMQTTBrokerMessageTopic(state, data) {
+      state.mqtt_broker_message_topic = data
+    },
+    setMQTTBrokerMessage(state, data) {
+      state.mqtt_broker_message = data
+    },
+    setMQTTBrokerPrintMessageLog(state) {
+      state.print_mqtt_broker_log += `${moment().format("HH:mm:ss")} -> req:(${state.mqtt_broker_message_topic}) ${state.mqtt_broker_message}\r`
+    },
+    setMQTTBrokerPublishMessageQOS(state, data) {
+      state.mqtt_broker_message_qos = Number(data)
+    },
+    setMQTTBrokerPublishMessageRetain(state, data) {
+      state.mqtt_broker_message_retain = data
+    },
     clearMQTTBrokerServer(state) {
       state.broker_server = ""
     },
     clearMQTTBroker(state) {
       state.mqtt_broker = ""
+    },
+    clearMQTTBrokerPrintMessageLogs(state) {
+      state.print_mqtt_broker_log = ""
     }
   },
   actions: {
@@ -48,7 +69,7 @@ export default {
       })
 
       state.mqtt_broker.on('publish', function (packet, client) {
-        console.log("publish")
+        console.log(packet)
       })
 
       state.mqtt_broker.on('subscribe', function (packet, client) {
@@ -63,15 +84,6 @@ export default {
         console.log(`${client.id} has connection error`)
       })
 
-      /*state.mqtt_broker.publish({
-        cmd: 'publish',
-        qos: 0,
-        dup: false,
-        topic: `device/${data.modem_id}/${data.device_id}`,
-        payload: Buffer.from(data.data.toString()),
-        retain: false
-      })*/
-
     },
     closeMQTTBroker({ commit, state }) {
       state.broker_server.close()
@@ -80,6 +92,17 @@ export default {
       commit("clearMQTTBrokerServer")
       commit("clearMQTTBroker")
     },
+    sendMQTTBrokerMessageToClient({ commit, state }) {
+      state.mqtt_broker.publish({
+        cmd: 'publish',
+        qos: state.mqtt_broker_message_qos,
+        dup: false,
+        topic: state.mqtt_broker_message_topic,
+        payload: state.mqtt_broker_message,
+        retain: state.mqtt_broker_message_retain,
+      })
+      commit("setMQTTBrokerPrintMessageLog")
+    }
   },
   getters: {
     getMQTTBroker(state) {
@@ -93,6 +116,18 @@ export default {
     },
     getMQTTBrokerPrintLogs(state) {
       return state.print_mqtt_broker_log
-    }
+    },
+    getMQTTBrokerMessageTopic(state) {
+      return state.mqtt_broker_message_topic
+    },
+    getMQTTBrokerMessage(state) {
+      return state.mqtt_broker_message
+    },
+    getMQTTBrokerQOS(state) {
+      return state.mqtt_broker_message_qos
+    },
+    getMQTTBrokerRetain(state) {
+      return state.mqtt_broker_message_retain
+    },
   }
 }

@@ -91,7 +91,9 @@ export default {
     }),
   },
   methods: {
-    clearMQTTBrokerLogs() {},
+    clearMQTTBrokerLogs() {
+      this.$store.commit("clearMQTTBrokerPrintMessageLogs");
+    },
     clearMQTTClientLogs() {},
   },
 };
