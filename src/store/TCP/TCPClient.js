@@ -45,8 +45,8 @@ export default {
   },
   actions: {
     createTCPConnection({ commit, state, dispatch }) {
-      commit("setTCPClient")
       commit("setTCPClientConnectionStatus", true)
+      commit("setTCPClient")
 
       state.tcp_client.connect({ host: state.tcp_client_host, port: state.tcp_client_port }, () => {
         commit("setTCPClientServerStatus", true)

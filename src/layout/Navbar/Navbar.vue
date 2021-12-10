@@ -53,11 +53,11 @@
           <div
             class="status-light"
             :style="{
-              backgroundColor: mqtt_client_status
+              backgroundColor: mqtt_client_server_status
                 ? 'rgb(0, 215, 0)'
                 : 'rgb(255, 0, 0)',
               boxShadow: `0 0 5px ${
-                mqtt_client_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
+                mqtt_client_server_status ? 'rgb(0, 215, 0)' : 'rgb(255, 0, 0)'
               }`,
             }"
           ></div>
@@ -132,7 +132,7 @@ export default {
       tcp_server_status: "getTCPServerStatus",
       tcp_client_server_status: "getTCPClientServerStatus",
       mqtt_broker_status: "getMQTTBrokerStatus",
-      mqtt_client_status: "getMQTTClientStatus",
+      mqtt_client_server_status: "getMQTTClientServerStatus",
     }),
   },
   created() {

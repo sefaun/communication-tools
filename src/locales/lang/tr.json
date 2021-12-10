@@ -26,6 +26,11 @@
       "type_a_port": "Port Yazınız",
       "type_topic_and_message": "Topic ve Mesaj Yazınız",
       "mqtt_broker_closed": "MQTT Broker Kapandı"
+    },
+    "mqtt_client": {
+      "type_host_and_port": "Sunucu Adı ve Portu Yazınız",
+      "type_subscribe_topic": "Abone İsmi Yazınız",
+      "type_publish_topic_and_message": "Publish Topic and Mesaj Yazınız"
     }
   },
   "sidebar": {
@@ -68,6 +73,12 @@
       "broker_message": "Broker Mesaj",
       "send_message": "Mesaj Gönder"
     },
-    "client": {}
+    "client": {
+      "connect_to_broker": "Broker'a Bağlan",
+      "close_connection": "Bağlantıyı Sonlandır",
+      "subscribe": "Abone Ol",
+      "message": "Mesaj",
+      "publish": "Mesaj Gönder"
+    }
   }
 }

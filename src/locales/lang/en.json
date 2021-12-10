@@ -26,6 +26,11 @@
       "type_a_port": "Type a Port",
       "type_topic_and_message": "Type Topic and Message",
       "mqtt_broker_closed": "MQTT Broker Closed"
+    },
+    "mqtt_client": {
+      "type_host_and_port": "Type Host and Port",
+      "type_subscribe_topic": "Type Subscribe Topic",
+      "type_publish_topic_and_message": "Type Publish Topic ve Message"
     }
   },
   "sidebar": {
@@ -68,6 +73,12 @@
       "broker_message": "Broker Message",
       "send_message": "Publish Message"
     },
-    "client": {}
+    "client": {
+      "connect_to_broker": "Connect Broker",
+      "close_connection": "Close Connection",
+      "subscribe": "Subscribe",
+      "message": "Message",
+      "publish": "Publish"
+    }
   }
 }
