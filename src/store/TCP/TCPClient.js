@@ -34,10 +34,10 @@ export default {
       state.tcp_client_server_status = data
     },
     printTCPCLientLog(state, data) {
-      state.print_tcp_client_log += `${moment().format("HH:mm:ss")} -> req: ${data}\r`;
+      state.print_tcp_client_log += `${moment().format("HH:mm:ss")} -> Me(Client): ${data}\r`;
     },
     printServerMessages(state, data) {
-      state.print_tcp_client_log += `${moment().format("HH:mm:ss")} -> res: ${data}`;
+      state.print_tcp_client_log += `${moment().format("HH:mm:ss")} -> Server: ${data}`;
     },
     clearTCPClientLogs(state) {
       state.print_tcp_client_log = ""

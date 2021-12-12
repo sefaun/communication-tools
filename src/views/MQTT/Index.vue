@@ -94,7 +94,9 @@ export default {
     clearMQTTBrokerLogs() {
       this.$store.commit("clearMQTTBrokerPrintMessageLogs");
     },
-    clearMQTTClientLogs() {},
+    clearMQTTClientLogs() {
+      this.$store.commit("clearMQTTClientPrintMessageLogs");
+    },
   },
 };
 </script>

@@ -1,9 +1,9 @@
-const aedes = require('aedes')()
-const server = require('net').createServer(aedes.handle)
 import moment from "moment"
 
 export default {
   state: {
+    aedes: "",
+    server: "",
     broker_server: "",
     mqtt_broker: "",
     mqtt_broker_port: "",
@@ -16,10 +16,8 @@ export default {
   },
   mutations: {
     setMQTTBrokerServer(state) {
-      state.broker_server = server
-    },
-    setMQTTBroker(state) {
-      state.mqtt_broker = aedes
+      state.aedes = require('aedes')()
+      state.server = require('net').createServer(state.aedes.handle)
     },
     setMQTTBrokerPort(state, data) {
       state.mqtt_broker_port = data
@@ -34,7 +32,10 @@ export default {
       state.mqtt_broker_message = data
     },
     setMQTTBrokerPrintMessageLog(state) {
-      state.print_mqtt_broker_log += `${moment().format("HH:mm:ss")} -> req:(${state.mqtt_broker_message_topic}) ${state.mqtt_broker_message}\r`
+      state.print_mqtt_broker_log += `${moment().format("HH:mm:ss")} -> Me(Broker):(${state.mqtt_broker_message_topic}) ${state.mqtt_broker_message}\r`
+    },
+    setMQTTBrokerPrintClientsMessageLog(state, data) {
+      state.print_mqtt_broker_log += `${moment().format("HH:mm:ss")} -> Client:(${data.topic}) ${data.payload.toString()}\r`
     },
     setMQTTBrokerPublishMessageQOS(state, data) {
       state.mqtt_broker_message_qos = Number(data)
@@ -54,46 +55,46 @@ export default {
   },
   actions: {
     createMQTTBroker({ commit, state }) {
-      //Set Socket Data
+      //Set MQTT Broker
       commit("setMQTTBrokerServer")
-      //Set MQTT Data
-      commit("setMQTTBroker")
 
-      state.broker_server.listen(state.mqtt_broker_port, function () {
+      state.server.listen(state.mqtt_broker_port, function () {
         console.log(`MQTT Broker is Running on Port ${state.mqtt_broker_port}`)
         commit("setMQTTBrokerStatus", true)
       })
 
-      state.mqtt_broker.on('client', function (client) {
+      state.aedes.on('client', function (client) {
         console.log("yeni biri geldi")
       })
 
-      state.mqtt_broker.on('publish', function (packet, client) {
-        console.log(packet)
+      state.aedes.on('publish', function (packet, client) {
+        if (packet.cmd) {
+          commit("setMQTTBrokerPrintClientsMessageLog", packet)
+        }
       })
 
-      state.mqtt_broker.on('subscribe', function (packet, client) {
+      state.aedes.on('subscribe', function (packet, client) {
         console.log("subscribe")
       })
 
-      state.mqtt_broker.on('clientError', function (client, err) {
+      state.aedes.on('clientError', function (client, err) {
         console.log(`${client.id} has error`)
       })
 
-      state.mqtt_broker.on('connectionError', function (client, err) {
+      state.aedes.on('connectionError', function (client, err) {
         console.log(`${client.id} has connection error`)
       })
 
     },
     closeMQTTBroker({ commit, state }) {
-      state.broker_server.close()
-      state.mqtt_broker.close()
+      state.aedes.close()
+      state.server.close()
       commit("setMQTTBrokerStatus", false)
       commit("clearMQTTBrokerServer")
       commit("clearMQTTBroker")
     },
     sendMQTTBrokerMessageToClient({ commit, state }) {
-      state.mqtt_broker.publish({
+      state.aedes.publish({
         cmd: 'publish',
         qos: state.mqtt_broker_message_qos,
         dup: false,
@@ -105,9 +106,6 @@ export default {
     }
   },
   getters: {
-    getMQTTBroker(state) {
-      return state.mqtt_broker
-    },
     getMQTTBrokerPort(state) {
       return state.mqtt_broker_port
     },

@@ -27,10 +27,10 @@ export default {
       state.tcp_client_id++
     },
     printTCPServerLog(state, data) {
-      state.print_tcp_server_log += `${moment().format("HH:mm:ss")} -> req: ${data}\r`
+      state.print_tcp_server_log += `${moment().format("HH:mm:ss")} -> Me(Server): ${data}\r`
     },
     printTCPServerClientLog(state, data) {
-      state.print_tcp_server_log += `${moment().format("HH:mm:ss")} -> res: ${data}`
+      state.print_tcp_server_log += `${moment().format("HH:mm:ss")} -> Client: ${data}`
     },
     cleatTCPServerLogs(state) {
       state.print_tcp_server_log = ""

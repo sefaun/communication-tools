@@ -51,19 +51,6 @@
           </el-form-item>
         </el-form>
         <el-form label-position="top" :inline="true" class="demo-form-inline">
-          <el-form-item label="Qos">
-            <el-select size="mini" v-model="qos" placeholder="Qos">
-              <el-option label="0" value="0"></el-option>
-              <el-option label="1" value="1"></el-option>
-              <el-option label="2" value="2"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="row justify-content-start align-items-center mt-1">
-      <div class="col-md-6">
-        <el-form label-position="top" :inline="true" class="demo-form-inline">
           <el-form-item :label="$t('mqtt.broker.broker_message')">
             <el-input
               class="mb-2"
@@ -73,11 +60,24 @@
           </el-form-item>
         </el-form>
       </div>
+    </div>
+    <div class="row justify-content-start align-items-center mt-1">
+      <div class="col-md-6">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item label="Qos">
+            <el-select size="mini" v-model="qos" placeholder="Qos">
+              <el-option label="0" value="0"></el-option>
+              <el-option label="1" value="1"></el-option>
+              <el-option label="2" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
       <div class="col-md-6">
         <el-checkbox class="texts-dark" v-model="retain">Retain</el-checkbox>
       </div>
     </div>
-    <div class="row justify-content-start align-items-center mt-1">
+    <div class="row justify-content-start align-items-center mt-4 mb-1">
       <div class="col-12">
         <el-button
           class="m-0 mt-2"
@@ -119,7 +119,7 @@ export default {
       if (this.port !== this.tcp_port) {
         this.$store.commit("setMQTTBrokerPort", this.port);
       } else if (this.port === "") {
-        this.port = val;
+        this.port = "";
       } else {
         this.port = Number(val) + 1;
         this.$store.dispatch("pushNotification", {

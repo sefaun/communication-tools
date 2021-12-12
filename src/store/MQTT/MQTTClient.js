@@ -7,9 +7,13 @@ export default {
     mqtt_client_host: "",
     mqtt_client_port: "",
     mqtt_client_subscribe_topic: "",
+    mqtt_client_subscribe_qos: 0,
     mqtt_client_publish_topic: "",
     mqtt_client_publish_message: "",
+    mqtt_client_publish_message_qos: 0,
+    mqtt_client_publish_message_retain: false,
     print_mqtt_client_log: "",
+    print_mqtt_broker_messages_to_client: "",
     mqtt_client_connection_status: false,
     mqtt_client_server_status: false,
   },
@@ -32,6 +36,9 @@ export default {
     setMQTTSubscribeTopic(state, data) {
       state.mqtt_client_subscribe_topic = data
     },
+    setMQTTSubscribeQOS(state, data) {
+      state.mqtt_client_subscribe_qos = Number(data)
+    },
     setMQTTPublishTopic(state, data) {
       state.mqtt_client_publish_topic = data
     },
@@ -39,7 +46,19 @@ export default {
       state.mqtt_client_publish_message = data
     },
     setMQTTClientPrintMessage(state, data) {
-      state.print_mqtt_client_log = data
+      state.print_mqtt_client_log += `${moment().format("HH:mm:ss")} -> Me(Client):(${state.mqtt_client_publish_topic}) ${state.mqtt_client_publish_message}\r`
+    },
+    printMQTTBrokerMessages(state, data) {
+      state.print_mqtt_client_log += `${moment().format("HH:mm:ss")} -> Broker:(${data.topic}) ${data.payload.toString()}\r`
+    },
+    setMQTTClientPublishMessageQOS(state, data) {
+      state.mqtt_client_publish_message_qos = Number(data)
+    },
+    setMQTTClientPublishMessageRetain(state, data) {
+      state.mqtt_client_publish_message_retain = data
+    },
+    clearMQTTClientPrintMessageLogs(state) {
+      state.print_mqtt_client_log = ""
     },
     clearMqttClient(state) {
       state.mqtt_client = ""
@@ -53,6 +72,7 @@ export default {
 
         state.mqtt_client.on("message", (topic, payload, packet) => {
           console.log(packet);
+          commit("printMQTTBrokerMessages", packet)
         });
 
         state.mqtt_client.on("connect", (packet) => {
@@ -74,11 +94,12 @@ export default {
       }
     },
     publishMQTTClientMessage({ commit, state }) {
-      state.mqtt_client.publish(state.mqtt_client_publish_topic, state.mqtt_client_publish_message);
-      commit("print data buraya")
+      state.mqtt_client.publish(state.mqtt_client_publish_topic, state.mqtt_client_publish_message,
+        { qos: state.mqtt_client_publish_message_qos, retain: state.mqtt_client_publish_message_retain });
+      commit("setMQTTClientPrintMessage")
     },
     subscribeToTopic({ state }) {
-      state.mqtt_client.subscribe(state.mqtt_client_subscribe_topic)
+      state.mqtt_client.subscribe(state.mqtt_client_subscribe_topic, { qos: state.mqtt_client_subscribe_qos })
     },
     closeMQTTClientConnection({ commit, state }) {
       state.mqtt_client.end();
@@ -103,11 +124,20 @@ export default {
     getMQTTClientSubscribeTopic(state) {
       return state.mqtt_client_subscribe_topic
     },
+    getMQTTSubscribeQOS(state) {
+      return state.mqtt_client_subscribe_qos
+    },
     getMQTTClientPublishTopic(state) {
       return state.mqtt_client_publish_topic
     },
     getMQTTClientPublishMessage(state) {
       return state.mqtt_client_publish_message
+    },
+    getMQTTClientPublishMessageQOS(state) {
+      return state.mqtt_client_publish_message_qos
+    },
+    getMQTTClientPublishMessageRetain(state) {
+      return state.mqtt_client_publish_message_retain
     },
     getMQTTClientPrintLogs(state) {
       return state.print_mqtt_client_log

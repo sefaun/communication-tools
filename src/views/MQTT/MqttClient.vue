@@ -60,7 +60,7 @@
         <h5 class="texts-dark">Subscribe</h5>
       </div>
     </div>
-    <div class="row justify-content-around align-items-end">
+    <div class="row justify-content-around">
       <div class="col-md-6">
         <el-form label-position="top" :inline="true" class="demo-form-inline">
           <el-form-item label="Topic">
@@ -73,6 +73,19 @@
         </el-form>
       </div>
       <div class="col-md-6">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item label="Qos">
+            <el-select size="mini" v-model="subscribe_qos" placeholder="Qos">
+              <el-option label="0" value="0"></el-option>
+              <el-option label="1" value="1"></el-option>
+              <el-option label="2" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+    <div class="row justify-content-start mt-2">
+      <div class="col-12">
         <el-button
           class="mb-2"
           size="mini"
@@ -90,7 +103,7 @@
         <h5 class="texts-dark">Publish</h5>
       </div>
     </div>
-    <div class="row justify-content-start mt-1">
+    <div class="row justify-content-start align-items-center mt-1">
       <div class="col-12 d-flex">
         <el-form label-position="top" :inline="true" class="demo-form-inline">
           <el-form-item label="Topic">
@@ -112,7 +125,23 @@
         </el-form>
       </div>
     </div>
-    <div class="row justify-content-start mt-1 mb-1">
+    <div class="row justify-content-start align-items-center mt-1">
+      <div class="col-md-6">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item label="Qos">
+            <el-select size="mini" v-model="qos" placeholder="Qos">
+              <el-option label="0" value="0"></el-option>
+              <el-option label="1" value="1"></el-option>
+              <el-option label="2" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="col-md-6">
+        <el-checkbox class="texts-dark" v-model="retain">Retain</el-checkbox>
+      </div>
+    </div>
+    <div class="row justify-content-start mt-4 mb-1">
       <div class="col-12">
         <el-button
           class="m-0 mt-1"
@@ -137,8 +166,11 @@ export default {
       host: "",
       port: "",
       subscribe_topic: "",
+      subscribe_qos: 0,
       publish_topic: "",
       publish_message: "",
+      qos: 0,
+      retain: false,
     };
   },
   watch: {
@@ -160,11 +192,20 @@ export default {
     subscribe_topic: function (val) {
       this.$store.commit("setMQTTSubscribeTopic", val);
     },
+    subscribe_qos: function (val) {
+      this.$store.commit("setMQTTSubscribeQOS", val);
+    },
     publish_topic: function (val) {
       this.$store.commit("setMQTTPublishTopic", val);
     },
     publish_message: function (val) {
       this.$store.commit("setMQTTPublishMessage", val);
+    },
+    qos: function (val) {
+      this.$store.commit("setMQTTClientPublishMessageQOS", val);
+    },
+    retain: function (val) {
+      this.$store.commit("setMQTTClientPublishMessageRetain", val);
     },
   },
   computed: {
@@ -172,8 +213,11 @@ export default {
       mqtt_client_host: "getMQTTClientHost",
       mqtt_client_port: "getMQTTClientPort",
       mqtt_client_subscribe_topic: "getMQTTClientSubscribeTopic",
+      mqtt_client_subscribe_qos: "getMQTTSubscribeQOS",
       mqtt_client_publish_topic: "getMQTTClientPublishTopic",
       mqtt_client_publish_message: "getMQTTClientPublishMessage",
+      mqtt_client_publish_message_qos: "getMQTTClientPublishMessageQOS",
+      mqtt_client_publish_message_retain: "getMQTTClientPublishMessageRetain",
       mqtt_client_connection_status: "getMQTTClientConnectionStatus",
       mqtt_client_server_status: "getMQTTClientServerStatus",
     }),
@@ -219,8 +263,11 @@ export default {
       this.host = this.mqtt_client_host;
       this.port = this.mqtt_client_port;
       this.subscribe_topic = this.mqtt_client_subscribe_topic;
+      this.subscribe_qos = this.mqtt_client_subscribe_qos;
       this.publish_topic = this.mqtt_client_publish_topic;
       this.publish_message = this.mqtt_client_publish_message;
+      this.qos = this.mqtt_client_publish_message_qos;
+      this.retain = this.mqtt_client_publish_message_retain;
     },
   },
 };
