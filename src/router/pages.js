@@ -10,6 +10,11 @@ export default [
     component: () => import('../views/MQTT/Index.vue'),
   },
   {
+    path: '/websocket',
+    name: 'WebSocket',
+    component: () => import('../views/WebSocket/Index.vue'),
+  },
+  {
     path: '/serial',
     name: 'Serial',
     component: () => import('../views/Serial/Index.vue'),

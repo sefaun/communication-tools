@@ -8,6 +8,10 @@ export default [
     path: "/mqtt",
   },
   {
+    name: "sidebar.websocket",
+    path: "/websocket",
+  },
+  {
     name: "sidebar.serial",
     path: "/serial",
   },

@@ -63,6 +63,23 @@
           ></div>
           <div class="texts-dark font">MQTT Client</div>
         </div>
+        <!--WebSocket Client-->
+        <div class="d-grid justify-content-center mr-1">
+          <div
+            class="status-light"
+            :style="{
+              backgroundColor: websocket_client_server_status
+                ? 'rgb(0, 215, 0)'
+                : 'rgb(255, 0, 0)',
+              boxShadow: `0 0 5px ${
+                websocket_client_server_status
+                  ? 'rgb(0, 215, 0)'
+                  : 'rgb(255, 0, 0)'
+              }`,
+            }"
+          ></div>
+          <div class="texts-dark font">WS Client</div>
+        </div>
       </div>
       <div class="myNavbar-links">
         <div style="margin-right: 15px">
@@ -133,6 +150,7 @@ export default {
       tcp_client_server_status: "getTCPClientServerStatus",
       mqtt_broker_status: "getMQTTBrokerStatus",
       mqtt_client_server_status: "getMQTTClientServerStatus",
+      websocket_client_server_status: "getWebSocketClientServerStatus",
     }),
   },
   created() {

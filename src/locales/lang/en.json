@@ -36,6 +36,7 @@
   "sidebar": {
     "tcp": "TCP/IP",
     "mqtt": "MQTT",
+    "websocket": "WebSocket",
     "serial": "Serial",
     "socket_io": "Socket.io"
   },
@@ -79,6 +80,13 @@
       "subscribe": "Subscribe",
       "message": "Message",
       "publish": "Publish"
+    }
+  },
+  "websocket": {
+    "client": {
+      "connect_to_server": "Connect Server",
+      "close_connection": "Close Connection",
+      "send_message_to_server": "Send Message"
     }
   }
 }

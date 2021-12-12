@@ -7,6 +7,7 @@ import TCPServer from "./TCP/TCPServer"
 import TCPClient from "./TCP/TCPClient"
 import MQTTBroker from './MQTT/MQTTBroker'
 import MQTTClient from './MQTT/MQTTClient'
+import WebSocketClient from './WebSocket/WebSocketClient'
 
 Vue.use(Vuex)
 
@@ -79,7 +80,8 @@ const store = new Vuex.Store({
     TCPServer: TCPServer,
     TCPClient: TCPClient,
     MQTTBroker: MQTTBroker,
-    MQTTClient: MQTTClient
+    MQTTClient: MQTTClient,
+    WebSocketClient: WebSocketClient
   }
 })
 
