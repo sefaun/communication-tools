@@ -10,13 +10,5 @@ export default [
   {
     name: "sidebar.websocket",
     path: "/websocket",
-  },
-  {
-    name: "sidebar.serial",
-    path: "/serial",
-  },
-  {
-    name: "sidebar.socket_io",
-    path: "/socket-io",
   }
 ]

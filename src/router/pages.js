@@ -13,15 +13,5 @@ export default [
     path: '/websocket',
     name: 'WebSocket',
     component: () => import('../views/WebSocket/Index.vue'),
-  },
-  {
-    path: '/serial',
-    name: 'Serial',
-    component: () => import('../views/Serial/Index.vue'),
-  },
-  {
-    path: '/socket-io',
-    name: 'SocketIO',
-    component: () => import('../views/Socket.io/Index.vue'),
-  },
+  }
 ]
