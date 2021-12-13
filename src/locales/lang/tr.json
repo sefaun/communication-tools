@@ -31,6 +31,9 @@
       "type_host_and_port": "Sunucu Adı ve Portu Yazınız",
       "type_subscribe_topic": "Abone İsmi Yazınız",
       "type_publish_topic_and_message": "Publish Topic and Mesaj Yazınız"
+    },
+    "websocket_client": {
+      "type_protocol_host_port": "Protokol, Sunucu ve Portu Yazınız"
     }
   },
   "sidebar": {
@@ -83,7 +86,13 @@
     }
   },
   "websocket": {
+    "index": {
+      "clear_logs": "Kayıtları Sil",
+      "client_logs": "Kullanıcı Kayıtları"
+    },
     "client": {
+      "protocol": "Protokol",
+      "host": "Sunucu",
       "connect_to_server": "Server'a Bağlan",
       "close_connection": "Bağlantıyı Sonlandır",
       "send_message_to_server": "Mesaj Gönder"

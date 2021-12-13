@@ -2,3 +2,7 @@
   background-color: $primary !important;
   color: white !important;
 }
+
+.el-select-dropdown__item.selected {
+  color: $primary !important
+}

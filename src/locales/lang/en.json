@@ -31,6 +31,9 @@
       "type_host_and_port": "Type Host and Port",
       "type_subscribe_topic": "Type Subscribe Topic",
       "type_publish_topic_and_message": "Type Publish Topic ve Message"
+    },
+    "websocket_client": {
+      "type_protocol_host_port": "Type Protocol, Host and Port"
     }
   },
   "sidebar": {
@@ -83,7 +86,13 @@
     }
   },
   "websocket": {
+    "index": {
+      "clear_logs": "Clear Logs",
+      "client_logs": "Client Logs"
+    },
     "client": {
+      "protocol": "Protocol",
+      "host": "Host",
       "connect_to_server": "Connect Server",
       "close_connection": "Close Connection",
       "send_message_to_server": "Send Message"

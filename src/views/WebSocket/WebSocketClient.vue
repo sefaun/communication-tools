@@ -13,10 +13,10 @@
           class="demo-form-inline"
           style="width: 100px"
         >
-          <el-form-item label="Protocol">
+          <el-form-item :label="$t('websocket.client.protocol')">
             <el-select
               size="mini"
-              placeholder="Protocol"
+              :placeholder="$t('websocket.client.protocol')"
               v-model="protocol"
               :disabled="websocket_client_server_status"
             >
@@ -26,7 +26,7 @@
           </el-form-item>
         </el-form>
         <el-form label-position="top" :inline="true" class="demo-form-inline">
-          <el-form-item :label="$t('tcp.client.host')">
+          <el-form-item :label="$t('websocket.client.host')">
             <el-input
               class="mb-2"
               size="mini"
@@ -128,6 +128,11 @@ export default {
     createWebSocketClientConnection() {
       if (this.protocol && this.host && this.port) {
         this.$store.dispatch("createWebSocketClientConnection");
+      } else {
+        this.$store.dispatch("pushNotification", {
+          message: "notifications.websocket_client.type_protocol_host_port",
+          type: "warning",
+        });
       }
     },
     sendWebSocketClientMessageToServer() {
