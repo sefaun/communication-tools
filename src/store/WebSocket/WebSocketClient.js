@@ -6,6 +6,7 @@ export default {
     websocket_client_protocol: "ws",
     websocket_client_host: "",
     websocket_client_port: "",
+    websocket_client_message: "",
     print_websocket_client_messages: "",
     websocket_client_server_status: false,
     websocket_client_connection_status: false
@@ -35,6 +36,9 @@ export default {
     setWebSocketClientMessageLog(state, data) {
       state.print_websocket_client_messages += `${moment().format("HH:mm:ss")} -> Me(Client): ${data}\r`;
     },
+    setWebSocketClientMessage(state, data) {
+      state.websocket_client_message = data
+    },
     clearWebSocketClientMessageLogs(state) {
       state.print_websocket_client_messages = ""
     },
@@ -55,7 +59,6 @@ export default {
       };
 
       state.websocket.onmessage = function (data) {
-        console.log(data)
         commit("setWebSocketClientServerMessageLog", data.data)
       };
 
@@ -104,6 +107,9 @@ export default {
     },
     getWebSocketClientConnectionStatus(state) {
       return state.websocket_client_connection_status
+    },
+    getWebSocketClientMessage(state) {
+      return state.websocket_client_message
     },
     getWebSocketClientMessageLog(state) {
       return state.print_websocket_client_messages

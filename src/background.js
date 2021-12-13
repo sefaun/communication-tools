@@ -16,7 +16,7 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 1024,
     height: 600,
-    title: "Socket-Tool",
+    title: "Communication-Tools",
     autoHideMenuBar: true, //Üst Bar
     icon: icon_path + '/src/assets/logo/main-logo.png',
     webPreferences: {

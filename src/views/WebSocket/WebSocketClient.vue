@@ -78,6 +78,28 @@
         </h5>
       </div>
     </div>
+    <div class="row justify-content-start align-items-center">
+      <div class="col-12">
+        <el-form label-position="top" :inline="true" class="demo-form-inline">
+          <el-form-item :label="$t('websocket.client.message')">
+            <el-input
+              class="mb-2"
+              size="mini"
+              v-model="client_message"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+        <el-button
+          class="m-0 mt-1"
+          size="mini"
+          type="special"
+          @click="sendWebSocketClientMessageToServer()"
+          :disabled="!websocket_client_server_status"
+        >
+          {{ $t("websocket.client.send_message_to_server") }}
+        </el-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -87,9 +109,10 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      protocol: "wss",
-      host: "gecit.altin.in",
-      port: "8443",
+      protocol: "ws",
+      host: "",
+      port: "",
+      client_message: "",
     };
   },
   watch: {
@@ -111,12 +134,16 @@ export default {
       }
       this.$store.commit("setWebSocketClientPort", this.port);
     },
+    websocket_client_message: function (val) {
+      this.$store.commit("setWebSocketClientMessage", val);
+    },
   },
   computed: {
     ...mapGetters({
       websocket_client_protocol: "getWebSocketClientProtocol",
       websocket_client_host: "getWebSocketClientHost",
       websocket_client_port: "getWebSocketClientPort",
+      websocket_client_message: "getWebSocketClientMessage",
       websocket_client_server_status: "getWebSocketClientServerStatus",
       websocket_client_connection_status: "getWebSocketClientConnectionStatus",
     }),
@@ -136,7 +163,14 @@ export default {
       }
     },
     sendWebSocketClientMessageToServer() {
-      this.$store.dispatch("sendWebSocketClientMessageToServer");
+      if (this.client_message) {
+        this.$store.dispatch("sendWebSocketClientMessageToServer");
+      } else {
+        this.$store.dispatch("pushNotification", {
+          message: "notifications.websocket_client.type_a_message",
+          type: "warning",
+        });
+      }
     },
     closeWebSocketClientConnection() {
       this.$store.dispatch("closeWebSocketClientConnection");
@@ -145,6 +179,7 @@ export default {
       this.protocol = this.websocket_client_protocol;
       this.host = this.websocket_client_host;
       this.port = this.websocket_client_port;
+      this.client_message = this.websocket_client_message;
     },
   },
 };

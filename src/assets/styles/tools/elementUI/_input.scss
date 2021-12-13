@@ -24,3 +24,7 @@
   color: $mainText !important;
   opacity: 0.9 !important;
 }
+
+.el-form-item__label {
+  line-height: 0 !important;
+}

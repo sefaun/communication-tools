@@ -33,7 +33,8 @@
       "type_publish_topic_and_message": "Publish Topic and Mesaj Yazınız"
     },
     "websocket_client": {
-      "type_protocol_host_port": "Protokol, Sunucu ve Portu Yazınız"
+      "type_protocol_host_port": "Protokol, Sunucu ve Portu Yazınız",
+      "type_a_message": "Mesaj Yazınız"
     }
   },
   "sidebar": {
@@ -95,7 +96,8 @@
       "host": "Sunucu",
       "connect_to_server": "Server'a Bağlan",
       "close_connection": "Bağlantıyı Sonlandır",
-      "send_message_to_server": "Mesaj Gönder"
+      "send_message_to_server": "Mesaj Gönder",
+      "message": "Mesaj"
     }
   }
 }
