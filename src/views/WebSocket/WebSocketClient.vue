@@ -134,7 +134,7 @@ export default {
       }
       this.$store.commit("setWebSocketClientPort", this.port);
     },
-    websocket_client_message: function (val) {
+    client_message: function (val) {
       this.$store.commit("setWebSocketClientMessage", val);
     },
   },
@@ -164,7 +164,7 @@ export default {
     },
     sendWebSocketClientMessageToServer() {
       if (this.client_message) {
-        this.$store.dispatch("sendWebSocketClientMessageToServer");
+        this.$store.dispatch("sendWebSocketClientMessageToServer", this.client_message);
       } else {
         this.$store.dispatch("pushNotification", {
           message: "notifications.websocket_client.type_a_message",
