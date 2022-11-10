@@ -24,4 +24,5 @@ jobs:
         cache: 'npm'
     - run: npm install -g vue
     - run: npm install -g @vue/cli
+    - run: npm install -g @vue/cli-service
     - run: npm run build
