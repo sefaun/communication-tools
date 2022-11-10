@@ -25,4 +25,5 @@ jobs:
     - run: npm install -g vue
     - run: npm install -g @vue/cli
     - run: npm install -g @vue/cli-service
+    - run: npm install -g @vue/cli-plugin-babel
     - run: npm run build
